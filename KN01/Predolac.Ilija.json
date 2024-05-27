@@ -1,0 +1,14 @@
+[{
+  "_id": {
+    "$oid": "66547d83a67b962a2e8cf743"
+  },
+  "name": "Ilija Predolac",
+  "address": "Letzistrasse",
+  "age": 17,
+  "height_cm": 180,
+  "birthdate": {
+    "$date": "2007-01-03T00:00:00.000Z"
+  },
+  "email": "ilija.predolac@edu.tbz.ch",
+  "phone_number": "+41 ** *** ** **"
+}]
