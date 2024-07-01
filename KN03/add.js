@@ -1,5 +1,3 @@
-
-
 var kundenID1 = new ObjectId();
 var kundenID2 = new ObjectId();
 var kundenID3 = new ObjectId();
@@ -12,11 +10,6 @@ var produktID5 = new ObjectId();
 
 var mitarbeiterID1 = new ObjectId();
 var mitarbeiterID2 = new ObjectId();
-
-var bestellungID1 = new ObjectId();
-var bestellungID2 = new ObjectId();
-var bestellungID3 = new ObjectId();
-var bestellungID4 = new ObjectId();
 
 db.produkte.insertMany([
     { _id: produktID1, produktname: "Laptop", beschreibung: "A Modern Laptop with Top features", preis: 699, groesse: 15 },
@@ -31,30 +24,59 @@ db.mitarbeiter.insertMany([
     { _id: mitarbeiterID2, name: "Jane Doe", mail: "jane.doe@example.com", abteilung: "Support", geschlecht: "Weiblich" }
 ]);
 
-db.bestellungen.insertMany([
-    { _id: bestellungID1, datum: new Date("2023-07-09"), status: "abgeschlossen", gesamtbetrag: 711.95, mitarbeiterID: mitarbeiterID1 },
-    { _id: bestellungID2, datum: new Date("2024-09-05"), status: "offen", gesamtbetrag: 249.50, mitarbeiterID: mitarbeiterID2 },
-    { _id: bestellungID3, datum: new Date("2024-09-12"), status: "offen", gesamtbetrag: 36.95, mitarbeiterID: mitarbeiterID1 },
-    { _id: bestellungID4, datum: new Date("1970-01-01"), status: "abgeschlossen", gesamtbetrag: 418.0, mitarbeiterID: mitarbeiterID2 }
-]);
+var bestellung1 = {
+    _id: new ObjectId(),
+    datum: new Date("2023-07-09"),
+    status: "abgeschlossen",
+    gesamtbetrag: 711.95,
+    mitarbeiterID: mitarbeiterID1,
+    produkte: [produktID1, produktID4]
+};
+
+var bestellung2 = {
+    _id: new ObjectId(),
+    datum: new Date("2024-09-05"),
+    status: "offen",
+    gesamtbetrag: 249.50,
+    mitarbeiterID: mitarbeiterID2,
+    produkte: [produktID2]
+};
+
+var bestellung3 = {
+    _id: new ObjectId(),
+    datum: new Date("2024-09-12"),
+    status: "offen",
+    gesamtbetrag: 36.95,
+    mitarbeiterID: mitarbeiterID1,
+    produkte: [produktID3]
+};
+
+var bestellung4 = {
+    _id: new ObjectId(),
+    datum: new Date("1970-01-01"),
+    status: "abgeschlossen",
+    gesamtbetrag: 418.0,
+    mitarbeiterID: mitarbeiterID2,
+    produkte: [produktID5]
+};
 
 db.kunden.insertOne({
     _id: kundenID1,
     name: "Tim Berners-Lee",
     adresse: "123 Web St",
-    bestellungen: [bestellungID1, bestellungID3]
+    bestellungen: [bestellung1, bestellung3]
 });
 
 db.kunden.insertOne({
     _id: kundenID2,
     name: "Noah Young",
     adresse: "456 Tech Ave",
-    bestellungen: [bestellungID2]
+    bestellungen: [bestellung2]
 });
 
 db.kunden.insertOne({
     _id: kundenID3,
     name: "Grace Hopper",
     adresse: "789 Code Rd",
-    bestellungen: [bestellungID4]
+    bestellungen: [bestellung4]
 });
