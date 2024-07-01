@@ -1,0 +1,28 @@
+CREATE
+  (c1:Customer {id: "1", name: "Max Mustermann", email: "max@mustermann.com", password: "pass123"}),
+  (c2:Customer {id: "2", name: "Erika Musterfrau", email: "erika@musterfrau.com", password: "pass123"}),
+  (c3:Customer {id: "3", name: "Hans Beispiel", email: "hans@beispiel.com", password: "pass123"}),
+  
+  (p1:Product {id: "p1", name: "Produkt A", description: "Beschreibung A", price: 100.0}),
+  (p2:Product {id: "p2", name: "Produkt B", description: "Beschreibung B", price: 200.0}),
+  (p3:Product {id: "p3", name: "Produkt C", description: "Beschreibung C", price: 300.0}),
+  
+  (o1:Order {id: "o1", orderDate: date('2024-01-10')}),
+  (o2:Order {id: "o2", orderDate: date('2024-02-15')}),
+  (o3:Order {id: "o3", orderDate: date('2024-03-20')}),
+  
+  (i1:Invoice {refNumber: 897234657, amount: 100.0, completed: false}),
+  (i2:Invoice {refNumber: 897234658, amount: 200.0, completed: false}),
+  (i3:Invoice {refNumber: 897234659, amount: 300.0, completed: true}),
+  
+  (c1)-[:HAS_ORDER]->(o1),
+  (c2)-[:HAS_ORDER]->(o2),
+  (c3)-[:HAS_ORDER]->(o3),
+  
+  (o1)-[:HAS_PRODUCT]->(p1),
+  (o2)-[:HAS_PRODUCT]->(p2),
+  (o3)-[:HAS_PRODUCT]->(p3),
+  
+  (o1)-[:HAS_INVOICE]->(i1),
+  (o2)-[:HAS_INVOICE]->(i2),
+  (o3)-[:HAS_INVOICE]->(i3);
